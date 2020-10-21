@@ -17,7 +17,7 @@ def norm(value, start, stop):
 
 w, h = 1000, 1000
 grid = 50
-pages = 10
+pages = 50
 
 color1Min = 0 # x
 color1Max = 1 # x
@@ -31,22 +31,29 @@ color3Max = 255 # pages
 
 for z in range(pages):
     newPage(w, h)
+    # the next two lines are going to map the progress we’ve made on the number of pages to the color 3 min and max range
     factor = lerp(0, pages, z)
     color3 = norm(factor, color3Min, color3Max)
-    # loop through columns
+    
+    # loop through rows
     for y in range(0, height(), grid):
-        # interpolate between 0 and 1 to get color value
+        # the next two lines are going to map the progress we’ve made on the y axis the color 2 min and max range
         factor = lerp(0, height(), y)
         color2 = norm(factor, color2Min, color2Max)
-        for x in range(0, width(), grid):
 
+        # loop through columns
+        for x in range(0, width(), grid):
+            # the next two lines are going to map the progress we’ve made on the x axis the color 1 min and max range
             factor = lerp(0, width(), x)
             color1 = norm(factor, color1Min, color1Max)
-
+            
+            # here’s where we convert from xyy to rgb
+            # feel free to reorder what color goes where
             r, g, b = _xyy_to_rgb_linear(
-                color1, 
                 color2, 
-                color3)
+                color1, 
+                color3
+                )
             fill(r, g, b)
             rect(x, y, grid, grid)
             
