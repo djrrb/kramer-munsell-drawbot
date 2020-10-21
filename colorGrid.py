@@ -17,7 +17,7 @@ def norm(value, start, stop):
 
 w, h = 1000, 1000
 grid = 50
-pages = 50
+pages = 10
 
 color1Min = 0 # x
 color1Max = 1 # x
