@@ -16,7 +16,7 @@ def norm(value, start, stop):
 	return start + (stop-start) * value
 
 w, h = 1000, 1000
-grid = 50
+grid = 25
 pages = 10
 
 color1Min = 0 # x
